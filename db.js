@@ -17,7 +17,7 @@ const sync = async() => {
             id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
             name VARCHAR(200) NOT NULL,
             CHECK (char_length(name) > 0),
-            "chefId" UUID REFERENCES chefs(id)
+            "chefId" UUID REFERENCES chefs(id) ON DELETE CASCADE
         );
     `;
     client.query(SQL);
@@ -54,9 +54,21 @@ const readTable = async(table) => {
     return (await client.query(SQL)).rows;
 };
 
+const removeFromTable = async(table, id) => {
+    const SQL = `DELETE FROM ${ table } WHERE id = ($1)`;
+    return (await client.query(SQL, [id])).rows[0];
+};
+
+const updateItem = async(table, id) => {
+    const SQL = `UPDATE ${ table }SET name WHERE id = ($1)`;
+    return (await client.query(SQL, [id])).rows[0];
+};
+
 module.exports = {
     sync,
     createChef,
     createRecipe,
-    readTable
+    readTable,
+    removeFromTable,
+    updateItem
 };

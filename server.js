@@ -12,16 +12,21 @@ app.get('/', (request, response, next) => {
     response.sendFile(path.join(__dirname, 'index.html'))
 });
 
-/*
-app.get('/api/users', (req, res, next)=> {
-  db.readUsers()
-    .then( users => res.send(users))
-    .catch(next);
-});
-*/
-
 app.get('/api/:type', (request, response, next) => {
     db.readTable(request.params.type)
+    .then( data => response.send(data))
+    .catch(next);
+});
+
+app.delete('/api/:type/:id', (request, response, next) => {
+    db.removeFromTable(request.params.type, request.params.id)
+    .then(() => response.sendStatus(204))
+    .catch(next);
+});
+
+//This may be wrong, it's just a placeholder for now.
+app.put('/api/:type/:id', (request, response, next) => {
+    db.updateItem(request.params.type, request.params.id)
     .then( data => response.send(data))
     .catch(next);
 });

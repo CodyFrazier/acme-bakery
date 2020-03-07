@@ -5,14 +5,21 @@ body{
     flex-flow: nowrap column;
     align-items: center;
 }
+input:focus{
+    outline: none;
+}
 ul{
     list-style-type: none;
-    padding: 0;
+    padding: 1rem;
+    border: 2px solid #425;
+    border-radius: 10px;
+
 }
 input{
     border: 1px solid #ea7200;
     background-color: #111;
     color: #ea7200;
+    margin: .5rem;
 }
 #listBox{
     display: flex;
@@ -28,5 +35,13 @@ input{
 }
 #chefList li{
     display: flex;
-    flex-flow: nowrap row;
+    flex-flow: nowrap column;
+}
+.chefRecipes{
+
+}
+.spaceB{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

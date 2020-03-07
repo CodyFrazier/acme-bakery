@@ -21,7 +21,7 @@ const sync = async() => {
         );
     `;
     client.query(SQL);
-    
+
     const [Juan, Ui, Ferris, Thomas, Megan] = await Promise.all([
         createChef({name: 'Juan'}),
         createChef({name: 'Ui'}),
@@ -34,6 +34,7 @@ const sync = async() => {
         createRecipe({name: 'Tomato Soup', chefId: Ferris.id}),
         createRecipe({name: 'Tako Okonomiyaki', chefId: Ui.id}),
         createRecipe({name: 'Bomb Enchiladas', chefId: Juan.id}),
+        createRecipe({name: 'Omedetai no Sekihan to Ohagi', chefId: Ui.id}),
         createRecipe({name: 'Jumbalaya', chefId: null})
     ]);
 };

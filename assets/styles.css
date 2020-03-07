@@ -1,0 +1,32 @@
+body{
+    background-color: #222;
+    color: #ea7200;
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+input{
+    border: 1px solid #ea7200;
+    background-color: #111;
+    color: #ea7200;
+}
+#listBox{
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+}
+#listBox > ul{
+    flex: 1;
+    margin: .25rem;
+}
+#listBox li{
+    margin-top: .5rem;
+}
+#chefList li{
+    display: flex;
+    flex-flow: nowrap row;
+}
